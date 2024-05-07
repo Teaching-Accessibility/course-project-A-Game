@@ -11,6 +11,8 @@ public class Board : MonoBehaviour
     private float distanceOut = 3;
     [SerializeField]
     private bool displayGfx;
+    [SerializeField]
+    private bool debugMode;
     private Cell[] cells;
 
     // Start is called before the first frame update
@@ -34,6 +36,8 @@ public class Board : MonoBehaviour
             cells = initializeCells(cellCount);
             cellCount_prev = cellCount;
         }
+
+        debug(debugMode);
     }
 
     private Cell[] initializeCells(int cellCount)
@@ -77,6 +81,33 @@ public class Board : MonoBehaviour
         return getIthPos(i, cellCount);
     }
 
+    private Cell getClosestCell(Vector2 pos, Cell[] cells)
+    {
+        Cell closest = cells[0];
+        var minDist = Mathf.Infinity;
+        var dist = 0f;
+        foreach(Cell c in cells)
+        {
+            dist = Vector2.Distance(c.transform.position, pos);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                closest = c;
+            }
+        }
+
+        return closest;
+    }
+
+    private void debug(bool enabled)
+    {
+        if(enabled)
+        {
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Debug.DrawLine(mousePos, getClosestCell(mousePos, cells).transform.position, Color.green);
+        }
+    }
+
     private void OnDrawGizmos()
     {
         if(displayGfx)
@@ -85,6 +116,8 @@ public class Board : MonoBehaviour
             {
                 Gizmos.DrawLine(transform.position, cell.gameObject.transform.position);
             }
+
+
         }
     }
 }
