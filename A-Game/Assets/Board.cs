@@ -10,12 +10,14 @@ public class Board : MonoBehaviour
     [SerializeField]
     private float distanceOut = 3;
     [SerializeField]
+    private float dragRadius;
+    [SerializeField]
     private bool displayGfx;
     [SerializeField]
     private bool debugMode;
     private Cell[] cells;
+    private Cell activeCell;
 
-    // Start is called before the first frame update
     void Awake()
     {
         cells = initializeCells(cellCount);
@@ -27,7 +29,6 @@ public class Board : MonoBehaviour
         cellCount = Mathf.Max(0, cellCount);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (cellCount != cellCount_prev)
@@ -38,6 +39,21 @@ public class Board : MonoBehaviour
         }
 
         debug(debugMode);
+
+        if(Input.GetMouseButton(0))
+        {
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Cell closest = getClosestCell(mousePos, cells);
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                activeCell = closest;
+                activeCell.tapped();
+            }
+        }
+
+        
+
     }
 
     private Cell[] initializeCells(int cellCount)
@@ -114,10 +130,13 @@ public class Board : MonoBehaviour
         {
             foreach(Cell cell in cells)
             {
+                Gizmos.color = Color.white;
                 Gizmos.DrawLine(transform.position, cell.gameObject.transform.position);
+                Gizmos.color = cell == activeCell ? Color.green : Color.cyan;
+                Gizmos.DrawWireSphere(cell.transform.position, dragRadius);
             }
 
-
+            
         }
     }
 }

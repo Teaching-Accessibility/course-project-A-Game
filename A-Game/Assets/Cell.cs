@@ -13,5 +13,9 @@ public class Cell : MonoBehaviour
         return obj;
     }
 
+    public void tapped()
+    {
+        Debug.Log("Cell tapped");
+    }
 
 }
