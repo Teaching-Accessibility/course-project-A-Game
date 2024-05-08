@@ -5,9 +5,8 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public Board board;
-    private TouchController touchInput;
+    private InputController touchInput;
 
-    [SerializeField]
     private Cell activeCell;
     private Cell nextCell;
 
@@ -15,7 +14,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        touchInput = GetComponent<TouchController>();
+        touchInput = GetComponent<InputController>();
     }
 
     // Update is called once per frame
@@ -28,13 +27,13 @@ public class GameController : MonoBehaviour
     {
         switch (touchInput.phase)
         {
-            case TouchController.Phase.BEGIN:
+            case InputController.Phase.BEGIN:
                 singleTouch();
                 break;
-            case TouchController.Phase.DRAG:
+            case InputController.Phase.DRAG:
                 dragTouch();
                 break;
-            case TouchController.Phase.RELEASE:
+            case InputController.Phase.RELEASE:
                 releaseTouch();
                 break;
         }

@@ -41,8 +41,6 @@ public class Board : MonoBehaviour
 
         debug(debugMode);
 
-
-
     }
 
     private Cell[] initializeCells(int cellCount)
