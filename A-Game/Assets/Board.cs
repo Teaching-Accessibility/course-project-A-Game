@@ -17,6 +17,7 @@ public class Board : MonoBehaviour
     private bool debugMode;
     private Cell[] cells;
     private Cell activeCell;
+    private Vector2 activePos;
 
     void Awake()
     {
@@ -40,27 +41,15 @@ public class Board : MonoBehaviour
 
         debug(debugMode);
 
-        if(Input.GetMouseButton(0))
-        {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Cell closest = getClosestCell(mousePos, cells);
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                activeCell = closest;
-                activeCell.tapped();
-            }
-        }
-
-        
 
     }
 
     private Cell[] initializeCells(int cellCount)
     {
         Cell[] cellArr = new Cell[cellCount];
-        
-        for(int i = 0; i < cellCount; i++)
+
+        for (int i = 0; i < cellCount; i++)
         {
             GameObject obj = Cell.MakeObj(getWorldPosAt(getIthPos(i)), transform);
             cellArr[i] = obj.GetComponent<Cell>();
@@ -71,19 +60,19 @@ public class Board : MonoBehaviour
 
     private void clearCells(Cell[] cellArr)
     {
-        foreach(Cell cell in cellArr)
+        foreach (Cell cell in cellArr)
         {
             GameObject.Destroy(cell.gameObject);
         }
-        
+
     }
 
     private Vector2 getWorldPosAt(float pos)
     {
         var r = distanceOut;
         return transform.position + new Vector3(
-            Mathf.Sin(pos)* r,
-            Mathf.Cos(pos)* r
+            Mathf.Sin(pos) * r,
+            Mathf.Cos(pos) * r
             );
     }
 
@@ -97,12 +86,12 @@ public class Board : MonoBehaviour
         return getIthPos(i, cellCount);
     }
 
-    private Cell getClosestCell(Vector2 pos, Cell[] cells)
+    public Cell getClosestCell(Vector2 pos, Cell[] cells)
     {
         Cell closest = cells[0];
         var minDist = Mathf.Infinity;
         var dist = 0f;
-        foreach(Cell c in cells)
+        foreach (Cell c in cells)
         {
             dist = Vector2.Distance(c.transform.position, pos);
             if (dist < minDist)
@@ -113,6 +102,11 @@ public class Board : MonoBehaviour
         }
 
         return closest;
+    }
+
+    public Cell getClosestCell(Vector2 pos)
+    {
+        return getClosestCell(pos, cells);
     }
 
     private void debug(bool enabled)
