@@ -6,6 +6,7 @@ public class InputController : MonoBehaviour
 {
     public Vector2 position;
     public Vector2 rawPosition;
+    public float holdTime;
 
     public enum Phase
     {
@@ -40,6 +41,7 @@ public class InputController : MonoBehaviour
             else if(rawPosition == position)
             {
                 phase = Phase.HELD;
+                holdTime += Time.deltaTime;
             }
             else
             {
@@ -51,6 +53,7 @@ public class InputController : MonoBehaviour
         if(Input.GetMouseButtonUp(0))
         {
             phase = Phase.RELEASE;
+            holdTime = 0;
         }
     }
 }

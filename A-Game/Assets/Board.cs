@@ -5,6 +5,8 @@ using UnityEngine;
 public class Board : MonoBehaviour
 {
     [SerializeField]
+    private GameObject cellObj;
+    [SerializeField]
     private int cellCount = 8;
     private int cellCount_prev;
     [SerializeField]
@@ -49,7 +51,8 @@ public class Board : MonoBehaviour
 
         for (int i = 0; i < cellCount; i++)
         {
-            GameObject obj = Cell.MakeObj(getWorldPosAt(getIthPos(i)), transform);
+            //GameObject obj = Cell.MakeObj(getWorldPosAt(getIthPos(i)), transform);
+            GameObject obj = Instantiate(cellObj, getWorldPosAt(getIthPos(i)), transform.rotation, transform);
             cellArr[i] = obj.GetComponent<Cell>();
         }
 
@@ -105,6 +108,13 @@ public class Board : MonoBehaviour
     public Cell getClosestCell(Vector2 pos)
     {
         return getClosestCell(pos, cells);
+    }
+
+    public Cell addSoundToBoard(Sound sound)
+    {
+        Cell cell = cells[Random.Range(0, cells.Length - 1)];
+        cell.addSound(sound);
+        return cell;
     }
 
     private void debug(bool enabled)

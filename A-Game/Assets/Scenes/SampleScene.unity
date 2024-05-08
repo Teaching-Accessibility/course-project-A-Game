@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 366476394}
   - component: {fileID: 366476393}
   - component: {fileID: 366476392}
+  - component: {fileID: 366476395}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -155,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0}
   rawPosition: {x: 0, y: 0}
+  holdTime: 0
   phase: 0
 --- !u!114 &366476393
 MonoBehaviour:
@@ -168,7 +170,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459365593391f9e459c97b9913b497b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  board: {fileID: 909272726}
+  board: {fileID: 366476395}
+  spawnTime: 0.3
+  spawnables:
+  - {fileID: 4964128220089319526, guid: d6274e1a27b8f6b4ba7d43b0d84ddcfe, type: 3}
+  - {fileID: 4964128220089319526, guid: e814a3b5cbbb6b04b92d56fe34ae1014, type: 3}
+  - {fileID: 4964128220089319526, guid: b96a62fd56d349846994642b36f76f90, type: 3}
 --- !u!4 &366476394
 Transform:
   m_ObjectHideFlags: 0
@@ -178,12 +185,30 @@ Transform:
   m_GameObject: {fileID: 366476391}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2268902, y: -0.4272207, z: -0.093002535}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &366476395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366476391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a93cea3745e4241ba54b7a493217ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellObj: {fileID: 1839366617597607543, guid: 06bfb2e5cd349a947b227e14af6a9847, type: 3}
+  cellCount: 10
+  distanceOut: 3
+  dragRadius: 0
+  displayGfx: 0
+  debugMode: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,59 +301,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &909272725
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 909272727}
-  - component: {fileID: 909272726}
-  m_Layer: 0
-  m_Name: board
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &909272726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 909272725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a93cea3745e4241ba54b7a493217ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cellCount: 14
-  distanceOut: 3
-  dragRadius: 0
-  displayGfx: 0
-  debugMode: 1
---- !u!4 &909272727
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 909272725}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 909272727}
   - {fileID: 366476394}
