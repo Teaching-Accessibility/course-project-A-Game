@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
     private InputController touchInput;
 
     private int count = 3;
-    private int probabilityArray[6][];
+    private int[][] probabilityArray;
 
     private Cell activeCell;
     private Cell nextCell;
@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         touchInput = GetComponent<InputController>();
+        setProbabiliy();
     }
 
     // Update is called once per frame
@@ -70,7 +71,7 @@ public class GameController : MonoBehaviour
             {
                 int randomProp = Random.Range(0, 100);
                 int spawnableIndex = 0;
-                for (int i = 0; i < probabilityArray[count].length; i++)
+                for (int i = 0; i < probabilityArray[count].Length; i++)
                 {
                     if (i == 0 && randomProp <= probabilityArray[count][i])
                     {
@@ -113,6 +114,7 @@ public class GameController : MonoBehaviour
 
     private void setProbabiliy()
     {
+        probabilityArray = new int[6][];
         // 100 -> probability %
         probabilityArray[0] = new int[1] { 100 };
         // 67, 33 -> probability %
