@@ -25,9 +25,13 @@ public class Cell : MonoBehaviour
     public void tap()
     {
         Debug.Log("Cell tapped");
-        if(sound != null)
+        if (sound != null)
         {
             playSound();
+        }
+        else
+        { 
+            audio.Play();
         }
     }
 
