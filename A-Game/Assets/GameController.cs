@@ -7,6 +7,9 @@ public class GameController : MonoBehaviour
     public Board board;
     private InputController touchInput;
 
+    private int count = 3;
+    private int probabilityArray[6][];
+
     private Cell activeCell;
     private Cell nextCell;
 
@@ -65,7 +68,20 @@ public class GameController : MonoBehaviour
             //board.addSoundToBoard(spawnables[Random.Range(0, spawnables.Length - 1)]);
             if (activeCell.empty())
             {
-                activeCell.addSound(spawnables[Random.Range(0, spawnables.Length - 1)]);
+                int randomProp = Random.Range(0, 100);
+                int spawnableIndex = 0;
+                for (int i = 0; i < probabilityArray[count].length; i++)
+                {
+                    if (i == 0 && randomProp <= probabilityArray[count][i])
+                    {
+                        spawnableIndex = i;
+                    }
+                    else if (randomProp <= probabilityArray[count][i] && randomProp >= probabilityArray[count][i-1]) 
+                    { 
+                        spawnableIndex = i;
+                    } 
+                }
+                activeCell.addSound(spawnables[spawnableIndex]);
             }
         }
     }
@@ -93,5 +109,21 @@ public class GameController : MonoBehaviour
         Vector2 pos = Camera.main.ScreenToWorldPoint(touchInput.position);
         nextCell = board.getClosestCell(pos);
         nextCell.release(activeCell);
+    }
+
+    private void setProbabiliy()
+    {
+        // 100 -> probability %
+        probabilityArray[0] = new int[1] { 100 };
+        // 67, 33 -> probability %
+        probabilityArray[1] = new int[2] { 67, 100 };
+        // 58, 28, 14 -> probability %
+        probabilityArray[2] = new int[3] { 58, 86, 100 };
+        // 54, 26, 13, 7 -> probability %
+        probabilityArray[3] = new int[4] { 54, 80, 93, 100 };
+        // 52, 27, 12, 6, 3 -> probability %
+        probabilityArray[4] = new int[5] { 52, 79, 91, 97, 100 };
+        // 52, 25, 12, 6, 3, 2 -> probability %
+        probabilityArray[5] = new int[6] { 52, 77, 89, 95, 98, 100 };
     }
 }
