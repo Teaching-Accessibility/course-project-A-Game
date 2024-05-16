@@ -1,22 +1,86 @@
-GROUP MEMBERS:
-1) Eli Bennett
-2) Sara Wooten: Empty cell sounds & Probability of different sounds spawning
-3) Preston ___
+<a name="readme-top"></a>
 
-FEATURES: 
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <!-- <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a> -->
+
+  <h1 align="center">A-Game</h1>
+  <p align="center">
+    An audio only game made in Unity
+    <br />
+    <br />
+    <!-- <br />
+    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    ·
+    <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    ·
+    <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+  </p> -->
+</div>
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#group-members">Group Members</a></li>
+    <li><a href="#features">Features</a></li>
+      <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#ui-documentation">UI Documentation</a></li>
+</details>
+
+## Group Members
+
+1. Eli Bennett
+2. Sara Wooten
+3. Preston Duffield
+
+## Features
+
 A-Game is a strictly audio based mobile game developed for people with major, or minor visual impairments, especially those with full/partial blindness. The game is a "merge type" game similar to many others on the market, with the exception that instead of merging images together to make better items, the user is merging audio clips to make better sounds. The games has the following features:
-* Since the game is designed primarily to be accessible to people who are fully blind, The game features zero visuals, and relies solely on audio queues. This means that there are no visual assets included in the Assets folder, and the application only shows a single black screen throughout the duration of the entire experience. That being said, while the game itself has zero visuals, the unity editor does feature some basic visuals for the developer to use when testing, but these can be turned on/off at any time.
-* A-Game features a radial board as opposed to a grid. This means that each cell that the board has is laid out in a circle surrounding the center of the screen. That being said, that center point can move to any part of the scene if it needs to. The number of cells in each board can change dynamically during runtime, but currently the best number is 8 cells as it is easiest to find the top, bottom, left, right, and diagonals of the screen.
-* Each cell object is proximity based, which means that no matter where the screen is touched, the closest cell will be calculated, and activated.
-* The moment the nearest Cell object is found and tapped, a single sound will play corresponding to the sound object that is held within the cell. If a Cell has no sound it will play an "empty cell" sound.
-* if an empty cell is held down, a new sound will be inserted in its place. The amount of time an empty cell must be held is determined by a variable that can change at any time, but its currently set to 0.3 seconds.
-* A randomness algorithm is used to determine what kind of sounds are created. Lower valued sounds are much more likely to spawn than higher ones.
-* If a sound object is dragged into another matching sound object (plays the same audio clip), it will merge into a new sound.
-* The Audio uses Unity's built in AudioSource component with the spatial setting turned all the way up. This means that the game features 3d sound depending on where a sound is playing from. This makes the gaming experience more enjoyable, and theoretically easier with headphones, but they are not required.
 
-INSTALLMENT INSTRUCTIONS:
+- Since the game is designed primarily to be accessible to people who are fully blind, The game features zero visuals, and relies solely on audio queues. This means that there are no visual assets included in the Assets folder, and the application only shows a single black screen throughout the duration of the entire experience. That being said, while the game itself has zero visuals, the unity editor does feature some basic visuals for the developer to use when testing, but these can be turned on/off at any time.
+- A-Game features a radial board as opposed to a grid. This means that each cell that the board has is laid out in a circle surrounding the center of the screen. That being said, that center point can move to any part of the scene if it needs to. The number of cells in each board can change dynamically during runtime, but currently the best number is 8 cells as it is easiest to find the top, bottom, left, right, and diagonals of the screen.
+- Each cell object is proximity based, which means that no matter where the screen is touched, the closest cell will be calculated, and activated.
+- The moment the nearest Cell object is found and tapped, a single sound will play corresponding to the sound object that is held within the cell. If a Cell has no sound it will play an "empty cell" sound.
+- if an empty cell is held down, a new sound will be inserted in its place. The amount of time an empty cell must be held is determined by a variable that can change at any time, but its currently set to 0.3 seconds.
+- A randomness algorithm is used to determine what kind of sounds are created. Lower valued sounds are much more likely to spawn than higher ones.
+- If a sound object is dragged into another matching sound object (plays the same audio clip), it will merge into a new sound.
+- The Audio uses Unity's built in AudioSource component with the spatial setting turned all the way up. This means that the game features 3d sound depending on where a sound is playing from. This makes the gaming experience more enjoyable, and theoretically easier with headphones, but they are not required.
 
-UI DOCUMENTATION: <br />
+## Getting Started
+
+To set up a development environment follow these steps. Ensure you have all of the prerequisites installed.
+
+### Prerequisites
+
+- [Unity Hub](https://unity.com/download)
+- Unity Editor version 2022.3.8f1
+- A Unity Account and a Free Unity Personal License
+- [Visual Studio](https://visualstudio.microsoft.com/downloads/)
+
+### Installation
+
+1. Clone the git repository locally.
+
+2. Open the project in Unity Hub, this will prompt an install of the proper Editor version if it is not yet installed.
+
+3. Install and Launch the editor.
+
+4. Open the project in the Unity Editor, this will prompt the package manager to install the dependencies.
+
+5. Once the project opens, to test the game press the play button at the top of Unity.
+
+## UI Documentation
+
+<br />
 ![image](https://github.com/Teaching-Accessibility/course-project-A-Game/assets/108377756/3b49af15-79bf-41d0-bfbe-52b178cdf447) <br />
 SCREEN ID: 1 <br />
 TITLE: Users View <br />
@@ -31,4 +95,4 @@ SCREEN ID: 2 <br />
 TITLE: Invisible Data Structure <br />
 DESCRIPTION: This screen is the underlying board structure in unity that is invisible to the user. The speaker shaped objects represent the cell objects that contain the sounds. There are 10 of them on the screen evenly spaced apart into 10 sections. The bright red lines represent the basic sections of each cell and the lighter read lines represent how they expand outside the circle shape to fill the screen. The sounds are played based on which section the tap of the user lands in. This screen implements the same user interactions and design guidelines as screen 1 because they are layered together but this part is invisible. This screen does not use stimulated back end because it is not visible to the user and does not access any other hidden parts.
 
-
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
