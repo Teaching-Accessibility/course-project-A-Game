@@ -38,9 +38,9 @@
 
 ## Group Members
 
-1. Eli Bennett
-2. Sara Wooten
-3. Preston Duffield
+1. Eli Bennett - Developer
+2. Sara Wooten - Developer
+3. Preston Duffield - Sound Design
 
 ## Features
 
