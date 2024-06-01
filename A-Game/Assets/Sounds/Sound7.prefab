@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5797339141750699006}
   - component: {fileID: 4964128220089319526}
   m_Layer: 0
-  m_Name: Sound2 2
+  m_Name: Sound7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca88079b43aef1498c1f631e4d3bb78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snd: {fileID: 8300000, guid: b6c92e88d6bb96c4889b342899a3236b, type: 3}
-  next: {fileID: 4964128220089319526, guid: f68559ea3b10da041a1ddc02d2319ddd, type: 3}
+  snd: {fileID: 8300000, guid: ca55899e72344c549bee58103a39ba48, type: 3}
+  next: {fileID: 4964128220089319526, guid: c5a36d3f0d1053242a76f9adbf292b6b, type: 3}

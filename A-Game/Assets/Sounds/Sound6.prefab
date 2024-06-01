@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5797339141750699006}
   - component: {fileID: 4964128220089319526}
   m_Layer: 0
-  m_Name: Sound2 1
+  m_Name: Sound6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snd: {fileID: 8300000, guid: 23ef09fb06247334f9e30ce55cad965e, type: 3}
-  next: {fileID: 4964128220089319526, guid: 81a6885acc1d325499e2ee2471af4d70, type: 3}
+  next: {fileID: 4964128220089319526, guid: 38f48a9751bf33e47b87e643b514327e, type: 3}

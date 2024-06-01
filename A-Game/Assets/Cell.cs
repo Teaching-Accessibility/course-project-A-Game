@@ -49,11 +49,16 @@ public class Cell : MonoBehaviour
             {
                 if(sound == otherCell.getSound())
                 {
-                    addSound(sound.getNext());
-                    otherCell.sound = null;
+                    mergeWith(otherCell);
                 }
             }
         }
+    }
+
+    private void mergeWith(Cell otherCell)
+    {
+        addSound(sound.getNext());
+        otherCell.sound = null;
     }
 
     public void playSound()
