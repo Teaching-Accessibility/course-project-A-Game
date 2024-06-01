@@ -11,7 +11,11 @@ GameObject:
   - component: {fileID: 5797339141750699006}
   - component: {fileID: 4964128220089319526}
   m_Layer: 0
+<<<<<<<< HEAD:A-Game/Assets/Sounds/Sound8.prefab
+  m_Name: Sound8
+========
   m_Name: Sound7
+>>>>>>>> 554f93b (Added 2 more sounds to have a total of 8. Sound merge order goes from low pitch to high pitch.):A-Game/Assets/Sounds/Sound7.prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,5 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca88079b43aef1498c1f631e4d3bb78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<<< HEAD:A-Game/Assets/Sounds/Sound8.prefab
+  snd: {fileID: 8300000, guid: 4c9a8613558ad5e498747bdd5a81fa79, type: 3}
+  next: {fileID: 0}
+========
   snd: {fileID: 8300000, guid: ca55899e72344c549bee58103a39ba48, type: 3}
-  next: {fileID: 4964128220089319526, guid: be2100241cf6c6742b59785a6f2d2a3a, type: 3}
+  next: {fileID: 4964128220089319526, guid: c5a36d3f0d1053242a76f9adbf292b6b, type: 3}
+>>>>>>>> 554f93b (Added 2 more sounds to have a total of 8. Sound merge order goes from low pitch to high pitch.):A-Game/Assets/Sounds/Sound7.prefab
