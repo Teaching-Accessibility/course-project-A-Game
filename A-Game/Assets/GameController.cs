@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
     public Board board;
     private InputController touchInput;
 
-    private int count = 3;
+    public static int count = 0;
     private int[][] probabilityArray;
 
     private Cell activeCell;
@@ -115,18 +115,12 @@ public class GameController : MonoBehaviour
 
     private void setProbabiliy()
     {
-        probabilityArray = new int[6][];
+        probabilityArray = new int[3][];
         // 100 -> probability %
         probabilityArray[0] = new int[1] { 100 };
         // 67, 33 -> probability %
         probabilityArray[1] = new int[2] { 67, 100 };
         // 58, 28, 14 -> probability %
         probabilityArray[2] = new int[3] { 58, 86, 100 };
-        // 54, 26, 13, 7 -> probability %
-        probabilityArray[3] = new int[4] { 54, 80, 93, 100 };
-        // 52, 27, 12, 6, 3 -> probability %
-        probabilityArray[4] = new int[5] { 52, 79, 91, 97, 100 };
-        // 52, 25, 12, 6, 3, 2 -> probability %
-        probabilityArray[5] = new int[6] { 52, 77, 89, 95, 98, 100 };
     }
 }

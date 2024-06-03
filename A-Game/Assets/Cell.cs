@@ -7,6 +7,8 @@ public class Cell : MonoBehaviour
     [SerializeField]
     private Sound sound;
     private AudioSource audio;
+    private ArrayList generatedSounds = new ArrayList();
+    private int generatedCount = 0;
 
     private void Start()
     {
@@ -57,6 +59,12 @@ public class Cell : MonoBehaviour
 
     private void mergeWith(Cell otherCell)
     {
+        if (generatedCount < 3 && alreadyGenerated(sound.getNext()) == false)
+        { 
+            generatedSounds.Add(sound.getNext());
+            generatedCount++;
+            GameController.count++;
+        }
         addSound(sound.getNext());
         otherCell.sound = null;
     }
@@ -80,6 +88,11 @@ public class Cell : MonoBehaviour
     public bool empty()
     {
         return sound == null;
+    }
+
+    public bool alreadyGenerated(Sound sound)
+    {
+        return generatedSounds.Contains(sound);
     }
 
 }
