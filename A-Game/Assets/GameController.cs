@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public static bool inMenu = false;
     public Board board;
     private InputController touchInput;
-
-    public Menu menu;
-    public bool inMenu;
 
     private int count = 3;
     private int[][] probabilityArray;
@@ -27,15 +25,16 @@ public class GameController : MonoBehaviour
     void Start()
     {
         touchInput = GetComponent<InputController>();
-        menu = GetComponent<Menu>();
         setProbabiliy();
-        inMenu = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        manageTouches();
+        if (!inMenu)
+        {
+            manageTouches();
+        }
     }
 
     private void manageTouches()
@@ -46,15 +45,12 @@ public class GameController : MonoBehaviour
                 singleTouch();
                 break;
             case InputController.Phase.HELD:
-                if (inMenu == false)
                     heldTouch();
                 break;
             case InputController.Phase.DRAG:
-                if (inMenu == false)
                     dragTouch();
                 break;
             case InputController.Phase.RELEASE:
-                if (inMenu == false)
                     releaseTouch();
                 break;
         }
@@ -63,19 +59,8 @@ public class GameController : MonoBehaviour
     private void singleTouch()
     {
         Vector2 pos = Camera.main.ScreenToWorldPoint(touchInput.position);
-        // Hardcodes values for now
-        if (pos.y < -3.5 && pos.x > 2.5) {
-            inMenu = true;
-            Debug.Log(Screen.height / 2 + " " + pos.y);
-            Debug.Log("Entered menu");
-            menu.openMenu();
-        }
-        
-        if (inMenu == false)
-        {
-            activeCell = board.getClosestCell(pos);
-            activeCell.tap();
-        }
+        activeCell = board.getClosestCell(pos);
+        activeCell.tap();
     }
 
     private void heldTouch()
