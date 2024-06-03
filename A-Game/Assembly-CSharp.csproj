@@ -60,6 +60,10 @@
     <Compile Include="Assets\InputController.cs" />
     <Compile Include="Assets\Board.cs" />
     <Compile Include="Assets\Cell.cs" />
+<<<<<<< Updated upstream
+=======
+    <Compile Include="Assets\Menu.cs" />
+>>>>>>> Stashed changes
     <Compile Include="Assets\Sound.cs" />
     <Compile Include="Assets\GameController.cs" />
   </ItemGroup>
