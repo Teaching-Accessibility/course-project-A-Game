@@ -46,13 +46,16 @@ public class GameController : MonoBehaviour
                 singleTouch();
                 break;
             case InputController.Phase.HELD:
-                heldTouch();
+                if (inMenu == false)
+                    heldTouch();
                 break;
             case InputController.Phase.DRAG:
-                dragTouch();
+                if (inMenu == false)
+                    dragTouch();
                 break;
             case InputController.Phase.RELEASE:
-                releaseTouch();
+                if (inMenu == false)
+                    releaseTouch();
                 break;
         }
     }
@@ -67,7 +70,8 @@ public class GameController : MonoBehaviour
             Debug.Log("Entered menu");
             menu.openMenu();
         }
-        else
+        
+        if (inMenu == false)
         {
             activeCell = board.getClosestCell(pos);
             activeCell.tap();
@@ -119,12 +123,9 @@ public class GameController : MonoBehaviour
 
     private void releaseTouch()
     {
-        if (inMenu == false)
-        {
-            Vector2 pos = Camera.main.ScreenToWorldPoint(touchInput.position);
-            nextCell = board.getClosestCell(pos);
-            nextCell.release(activeCell);
-        }
+        Vector2 pos = Camera.main.ScreenToWorldPoint(touchInput.position);
+        nextCell = board.getClosestCell(pos);
+        nextCell.release(activeCell);
     }
 
     private void setProbabiliy()
